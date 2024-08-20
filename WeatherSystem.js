@@ -9,7 +9,53 @@ class WeatherSystem {
 
         this.mMap.on('click', mapOnClick);
         this.mSelectedMarker = null;
-        this.mMarkers = []
+        this.mMarkers = [];
+
+        let ctx = document.getElementById('forecast_chart').getContext('2d');
+        let config = {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [
+                    {
+                        label: 'Maximum Temperature (°C)',
+                        data: [],
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Minimum Temperature (°C)',
+                        data: [],
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Dates (YYYY-MM-DD)'
+                        }
+                    },
+                    x: {
+                        position: 'top'
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    }
+                }
+            }
+        };
+
+        this.mChart = new Chart(ctx, config);
     }
 
     AddMarkers(jsonArray) {
@@ -26,7 +72,7 @@ class WeatherSystem {
         }
 
         if (marker != this.mSelectedMarker) {
-            marker.Click();
+            marker.Click(this.mChart);
             this.mSelectedMarker = marker;
         } else {
             this.mSelectedMarker = null;

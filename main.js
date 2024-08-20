@@ -1,4 +1,4 @@
-const accuWeatherApiKey = 'ohcWJbAu7v1CeoUXpJQmX7hndBq2ASnt';
+const accuWeatherApiKey = 'wGhrzGVpRQcN7D2F3eQeUmv2G7uqZoan';
 const googleApiKey = 'AIzaSyCGbGqGj08Q-flsrNm4tTORRr4Krk1jebg';
 
 let system = new WeatherSystem(function(event) {
