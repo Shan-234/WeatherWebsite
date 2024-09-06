@@ -13,3 +13,6 @@
 
 - **Chart.js**  
   ➡️ Represents data through bar/line charts.
+
+## Deployment:
+- **Deployment pending as docker needs to be set up.**
